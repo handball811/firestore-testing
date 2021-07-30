@@ -17,11 +17,11 @@ func Do0(c *firestore.Client) {
 				Action: InitCityFull,
 			},
 			{
-				Name:   "Get By City",
+				Name:   "Data To City",
 				Action: DataToCity,
 			},
 			{
-				Name:   "Get By City",
+				Name:   "Data To PC",
 				Action: DataToPC,
 			},
 		}...,
@@ -38,19 +38,19 @@ Name:  City Full
 *  users/
 *      userid0/
 *        tags: ([]interface {} -> [hello world haha])
-*        createdAt: (time.Time -> 2021-07-30 11:24:36.043113 +0000 UTC)
-*        name: (string -> sasakuna)
-*        updatedAt: (time.Time -> 2021-07-30 11:24:36.043113 +0000 UTC)
 *        population: (int64 -> 56)
+*        createdAt: (time.Time -> 2021-07-30 11:57:13.986231 +0000 UTC)
+*        name: (string -> sasakuna)
+*        updatedAt: (time.Time -> 2021-07-30 11:57:13.986231 +0000 UTC)
 (end)
 
-Name:  Get By City
+Name:  Data To City
 City:  &{sasakuna [hello world haha] 56}
 
-Name:  Get By City
-City:   interface{}(
-+       &structs.PC{Name: &"sasakuna", Tags: []string{"hello", "world", "haha"}, Pop: &56},
-  )
+Name:  Data To PC
+City:   interface{}(
++       &structs.PC{Name: &"sasakuna", Tags: []string{"hello", "world", "haha"}, Pop: &56},
+  )
 
 */
 
@@ -66,11 +66,11 @@ func Do1(c *firestore.Client) {
 				Action: InitCityPartial,
 			},
 			{
-				Name:   "Get By City",
+				Name:   "Data To City",
 				Action: DataToCity,
 			},
 			{
-				Name:   "Get By City",
+				Name:   "Data To PC",
 				Action: DataToPC,
 			},
 		}...,
@@ -86,20 +86,20 @@ Do1
 Name:  City Partial
 *  users/
 *      userid0/
-*        tags: (Nil -> <nil>)
 *        population: (int64 -> 0)
-*        createdAt: (time.Time -> 2021-07-30 11:24:36.056437 +0000 UTC)
+*        tags: (Nil -> <nil>)
+*        createdAt: (time.Time -> 2021-07-30 11:57:14.002157 +0000 UTC)
 *        name: (string -> sasakuna)
-*        updatedAt: (time.Time -> 2021-07-30 11:24:36.056437 +0000 UTC)
+*        updatedAt: (time.Time -> 2021-07-30 11:57:14.002157 +0000 UTC)
 (end)
 
-Name:  Get By City
+Name:  Data To City
 City:  &{sasakuna [] 0}
 
-Name:  Get By City
-City:   interface{}(
-+       &structs.PC{Name: &"sasakuna", Pop: &0},
-  )
+Name:  Data To PC
+City:   interface{}(
++       &structs.PC{Name: &"sasakuna", Pop: &0},
+  )
 
 */
 
@@ -115,11 +115,11 @@ func Do2(c *firestore.Client) {
 				Action: InitPCFull,
 			},
 			{
-				Name:   "Get By City",
+				Name:   "Data To City",
 				Action: DataToCity,
 			},
 			{
-				Name:   "Get By City",
+				Name:   "Data To PC",
 				Action: DataToPC,
 			},
 		}...,
@@ -135,20 +135,20 @@ Do2
 Name:  PC Full
 *  users/
 *      userid0/
-*        createdAt: (time.Time -> 2021-07-30 11:24:36.071136 +0000 UTC)
 *        name: (string -> sasakuna)
-*        updatedAt: (time.Time -> 2021-07-30 11:24:36.071136 +0000 UTC)
+*        updatedAt: (time.Time -> 2021-07-30 11:57:14.016314 +0000 UTC)
 *        tags: ([]interface {} -> [hello world haha])
 *        population: (int64 -> 56)
+*        createdAt: (time.Time -> 2021-07-30 11:57:14.016314 +0000 UTC)
 (end)
 
-Name:  Get By City
+Name:  Data To City
 City:  &{sasakuna [hello world haha] 56}
 
-Name:  Get By City
-City:   interface{}(
-+       &structs.PC{Name: &"sasakuna", Tags: []string{"hello", "world", "haha"}, Pop: &56},
-  )
+Name:  Data To PC
+City:   interface{}(
++       &structs.PC{Name: &"sasakuna", Tags: []string{"hello", "world", "haha"}, Pop: &56},
+  )
 
 */
 
@@ -164,11 +164,11 @@ func Do3(c *firestore.Client) {
 				Action: InitPCPartial,
 			},
 			{
-				Name:   "Get By City",
+				Name:   "Data To City",
 				Action: DataToCity,
 			},
 			{
-				Name:   "Get By City",
+				Name:   "Data To PC",
 				Action: DataToPC,
 			},
 		}...,
@@ -184,19 +184,19 @@ Do3
 Name:  PC Partial
 *  users/
 *      userid0/
-*        updatedAt: (time.Time -> 2021-07-30 11:24:36.089767 +0000 UTC)
+*        createdAt: (time.Time -> 2021-07-30 11:57:14.030879 +0000 UTC)
+*        name: (string -> sasakuna)
+*        updatedAt: (time.Time -> 2021-07-30 11:57:14.030879 +0000 UTC)
 *        tags: (Nil -> <nil>)
 *        population: (Nil -> <nil>)
-*        createdAt: (time.Time -> 2021-07-30 11:24:36.089767 +0000 UTC)
-*        name: (string -> sasakuna)
 (end)
 
-Name:  Get By City
+Name:  Data To City
 City:  &{sasakuna [] 0}
 
-Name:  Get By City
-City:   interface{}(
-+       &structs.PC{Name: &"sasakuna"},
-  )
+Name:  Data To PC
+City:   interface{}(
++       &structs.PC{Name: &"sasakuna"},
+  )
 
 */
