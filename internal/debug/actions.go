@@ -8,7 +8,7 @@ import (
 
 type ActionSet struct {
 	Name   string
-	Action func(*firestore.Client)
+	Action func(*firestore.Client) bool
 }
 
 type ActionPipline struct {
@@ -36,8 +36,10 @@ func (p *ActionPipline) Run() {
 	fmt.Println("")
 	fmt.Println("")
 	for _, set := range p.actionSets {
-		set.Action(p.client)
-		fmt.Println("Name: ", set.Name)
-		ShowAll(p.client)
+		fmt.Println("\nName: ", set.Name)
+		showAll := set.Action(p.client)
+		if showAll {
+			ShowAll(p.client)
+		}
 	}
 }

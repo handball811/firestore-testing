@@ -2,11 +2,13 @@ package structs
 
 import (
 	"context"
+	"fmt"
 
 	"cloud.google.com/go/firestore"
+	"github.com/google/go-cmp/cmp"
 )
 
-func InitCityFull(c *firestore.Client) {
+func InitCityFull(c *firestore.Client) bool {
 	init := &InitCity{
 		City: City{
 			Name: "sasakuna",
@@ -19,18 +21,20 @@ func InitCityFull(c *firestore.Client) {
 		}}
 	SetInit(&init.Init)
 	c.Doc("users/userid0").Create(context.Background(), init)
+	return true
 }
 
-func InitCityPartial(c *firestore.Client) {
+func InitCityPartial(c *firestore.Client) bool {
 	init := &InitCity{
 		City: City{
 			Name: "sasakuna",
 		}}
 	SetInit(&init.Init)
 	c.Doc("users/userid0").Create(context.Background(), init)
+	return true
 }
 
-func InitPCFull(c *firestore.Client) {
+func InitPCFull(c *firestore.Client) bool {
 	name := "sasakuna"
 	pop := int64(56)
 
@@ -46,9 +50,10 @@ func InitPCFull(c *firestore.Client) {
 		}}
 	SetInit(&init.Init)
 	c.Doc("users/userid0").Create(context.Background(), init)
+	return true
 }
 
-func InitPCPartial(c *firestore.Client) {
+func InitPCPartial(c *firestore.Client) bool {
 	name := "sasakuna"
 
 	init := &InitPC{
@@ -57,4 +62,21 @@ func InitPCPartial(c *firestore.Client) {
 		}}
 	SetInit(&init.Init)
 	c.Doc("users/userid0").Create(context.Background(), init)
+	return true
+}
+
+func DataToCity(c *firestore.Client) bool {
+	city := new(City)
+	snap, _ := c.Doc("users/userid0").Get(context.Background())
+	snap.DataTo(city)
+	fmt.Println("City: ", city)
+	return false
+}
+
+func DataToPC(c *firestore.Client) bool {
+	city := new(PC)
+	snap, _ := c.Doc("users/userid0").Get(context.Background())
+	snap.DataTo(city)
+	fmt.Printf("City: %s\n", cmp.Diff(nil, city))
+	return false
 }
