@@ -49,5 +49,8 @@ func (m *Map) Next() (string, error) {
 }
 
 func getType(t interface{}) string {
+	if t == nil {
+		return "Nil"
+	}
 	return reflect.TypeOf(t).String()
 }
